@@ -12,15 +12,17 @@ import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = MainActivity.class.getSimpleName();
+    public static final int startSpwanDelay = 1000;
     private float xZiel,yZiel;
     public int displaywidht;
     public int displayheight;
     private Player player;
+    private int spwanIntervallGeschwindigkeit = 250;
     private Handler handler = new Handler();
     private Runnable r = new Runnable() {
         public void run() {
             setEnemy(3000);
-            handler.postDelayed(r,1000);
+            handler.postDelayed(r,new Random().nextInt(spwanIntervallGeschwindigkeit-100)+100 );
         }
     };
 
@@ -36,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         player.setBackgroundResource(R.mipmap.playerraumschiff);
         player.startSequenz();
         ImageView hgrund = findViewById(R.id.hgrund);
-        handler.postDelayed(r, 5000);
+        handler.postDelayed(r, startSpwanDelay);
         player.setCoordssystem(hgrund);
 
 
@@ -50,9 +52,11 @@ public class MainActivity extends AppCompatActivity {
             enemy.setBackgroundResource(R.mipmap.meteorid);
 
     }
-    public void collison(){
+    public void collison(Enemy enemy){
         ImageView gameOver = findViewById(R.id.gameover);
         player.stopPlayer();
         gameOver.setVisibility(View.VISIBLE);
+        handler.removeCallbacksAndMessages(null);
+        enemy.freeze();
     }
 }
