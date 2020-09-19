@@ -4,25 +4,25 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = MainActivity.class.getSimpleName();
-    public static final int startSpwanDelay = 1000;
+    public List<Enemy> enemyList = new ArrayList<>();
     private float xZiel,yZiel;
     public int displaywidht;
     public int displayheight;
     private Player player;
-    private int spwanIntervallGeschwindigkeit = 250;
     private Handler handler = new Handler();
     private Runnable r = new Runnable() {
         public void run() {
             setEnemy(3000);
-            handler.postDelayed(r,new Random().nextInt(spwanIntervallGeschwindigkeit-100)+100 );
+            handler.postDelayed(r,new Random().nextInt(Constants.spwanIntervallGeschwindigkeit-100)+100 );
         }
     };
 
@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         player.setBackgroundResource(R.mipmap.playerraumschiff);
         player.startSequenz();
         ImageView hgrund = findViewById(R.id.hgrund);
-        handler.postDelayed(r, startSpwanDelay);
+        handler.postDelayed(r, Constants.startSpwanDelay);
         player.setCoordssystem(hgrund);
 
 
@@ -50,13 +50,15 @@ public class MainActivity extends AppCompatActivity {
             enemy.startX();
             enemy.move(displayheight, geschwindigkeit);
             enemy.setBackgroundResource(R.mipmap.meteorid);
-
+            enemyList.add(enemy);
     }
     public void collison(Enemy enemy){
         ImageView gameOver = findViewById(R.id.gameover);
         player.stopPlayer();
         gameOver.setVisibility(View.VISIBLE);
+        for (int i = 0; i< enemyList.size();i++){
+            enemyList.get(i).freeze();
+        }
         handler.removeCallbacksAndMessages(null);
-        enemy.freeze();
     }
 }

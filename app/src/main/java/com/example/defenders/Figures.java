@@ -16,7 +16,10 @@ public class Figures extends androidx.appcompat.widget.AppCompatImageView {
         displayheight = getResources().getDisplayMetrics().heightPixels;
         FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(
                 FrameLayout.LayoutParams.WRAP_CONTENT,
-                FrameLayout.LayoutParams.WRAP_CONTENT);
+                FrameLayout.LayoutParams.WRAP_CONTENT
+                );
+        setVisibility(INVISIBLE);
         return params;
     }
+
 }

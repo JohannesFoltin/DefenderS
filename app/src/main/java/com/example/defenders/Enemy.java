@@ -4,6 +4,7 @@ import android.animation.Animator;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.util.Log;
+import android.view.View;
 import android.view.ViewPropertyAnimator;
 import android.widget.FrameLayout;
 
@@ -20,12 +21,13 @@ public class Enemy extends Figures implements ValueAnimator.AnimatorUpdateListen
 
     public Enemy(Context context, Player spieler,MainActivity activity) {
         super(context);
-        mainActivity =activity;
+        mainActivity = activity;
         player = spieler;
     }
 
     public void move(int ZielY,int Geschwindigkeit){
-        animator = animate().setUpdateListener(this).y(ZielY).setDuration(Geschwindigkeit);
+        animator = animate().setUpdateListener(this).y(ZielY+500).setDuration(Geschwindigkeit);
+        derFreiTot();
     }
 
     @Override
@@ -37,14 +39,22 @@ public class Enemy extends Figures implements ValueAnimator.AnimatorUpdateListen
 
     }
     public void startX(){
+        setY(-600);
         post(new Runnable() {
             @Override
             public void run() {
+                setVisibility(VISIBLE);
                 setX(new Random().nextInt(displaywidht-getWidth()));
+
             }
         });
     }
     public void freeze(){
         animator.cancel();
+    }
+
+    public void derFreiTot(){
+        mainActivity.enemyList.remove(this);
+        setVisibility(View.GONE);
     }
 }
