@@ -12,7 +12,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#00FFFFFF"
-        android:visibility="visible" />
+        android:visibility="visible"
+        android:tileMode="repeat"/>
 
     <ImageView
         android:id="@+id/gameover"

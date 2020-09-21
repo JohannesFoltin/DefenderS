@@ -1,6 +1,4 @@
 TODO
-* Dokumention!!!
-* Player Delay
 * Mehr Enemys über Zeit
 * Hitbox!
 * Hintergrund

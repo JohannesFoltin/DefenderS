@@ -16,33 +16,31 @@ public class Player extends Figures {
     public Player(Context context) {
         super(context);
     }
-
+    //Playermovement
+    //Verhinderung von Sprüngen
+    //wird bei jedem kleinsten Bewegen des Fingers auf die X und Y Koordinate gesetzt
+    //return true sehr wichtig!
     public void setCoordssystem(ImageView Background){
         background = Background;
         background.setOnTouchListener(new View.OnTouchListener() {
             public boolean onTouch(View v, MotionEvent event) {
                 float xZiel = event.getX() - (getWidth()/2);
                 float yZiel = event.getY() - (getHeight()/2);
-                if (animator != null){
-                    return true;
+                if (pythagoras(xZiel,yZiel) <= 150){
+                    setX(xZiel);
+                    setY(yZiel);
                 }
-                animator = animate().x(xZiel).y(yZiel).setDuration((long)(pythagoras(xZiel,yZiel)/ Constants.playerSpeed));
-                animator.withEndAction(new Runnable() {
-                    @Override
-                    public void run() {
-                        animator = null;
-                    }
-                });
                 //Log.d(TAG, "onTouch: Move");
                 return true;
             }
         });
     }
-
+    //Macht den Player bewegungsunfähig
     public void stopPlayer() {
         background.setOnTouchListener(null);
     }
-
+    //Player wird ins Bild geschoben
+    //Er wird erst jetzt visible gesetzt wegen den enemys
     public void startSequenz(){
         post(new Runnable() {
             @Override
@@ -54,6 +52,9 @@ public class Player extends Figures {
             }
         });
     }
+    //Berechnung von Entferung durch Pythagoras.
+    // XZiel und YZiel
+    // PLayerposition wird genutzt
     private float pythagoras(float kathte1x, float kathte2y){
         return (float) Math.sqrt((double)(((getX()-kathte1x)*(getX()-kathte1x))+((getY()-kathte2y)*(getY()-kathte2y))));
     }
