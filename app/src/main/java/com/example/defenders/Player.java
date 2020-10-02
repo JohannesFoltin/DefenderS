@@ -6,15 +6,17 @@ import android.view.View;
 import android.view.ViewPropertyAnimator;
 import android.widget.ImageView;
 
-public class Player extends Figures {
+public class Player extends Figure {
        private ImageView background;
     private static final String TAG = Player.class.getSimpleName();
     private ViewPropertyAnimator animator;
+    private MainActivity mainActivity;
 
 
 
-    public Player(Context context) {
+    public Player(Context context,MainActivity mainActivity) {
         super(context);
+        this.mainActivity = mainActivity;
     }
     //Playermovement
     //Verhinderung von Sprüngen
@@ -30,6 +32,7 @@ public class Player extends Figures {
                     setX(xZiel);
                     setY(yZiel);
                 }
+               // mainActivity.spwanGunShot(100);
                 //Log.d(TAG, "onTouch: Move");
                 return true;
             }

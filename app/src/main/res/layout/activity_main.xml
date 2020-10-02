@@ -22,4 +22,12 @@
         android:background="@color/grey"
         android:visibility="invisible" />
 
+    <TextView
+        android:id="@+id/score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        tools:layout_editor_absoluteX="176dp"
+        tools:layout_editor_absoluteY="153dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

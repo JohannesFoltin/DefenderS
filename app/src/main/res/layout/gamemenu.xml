@@ -39,9 +39,15 @@
             android:text="EINSTELLUNGEN" />
 
         <Button
-            android:id="@+id/spielbeenden"
+            android:id="@+id/verbesserungen"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Spiel Beenden" />
+            android:text="Upgrades" />
+
+        <Button
+                android:id="@+id/spielbeenden"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Spiel Beenden" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,11 +5,11 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 //PLayer und Gegner gehören hier zu/leiten sich von dieser Klasse ab
 //Klasse leitet sich von dem ImageView ab
-public class Figures extends androidx.appcompat.widget.AppCompatImageView {
+public class Figure extends androidx.appcompat.widget.AppCompatImageView {
     public int displayheight;
     public int displaywidht;
 
-    public Figures(Context context) {
+    public Figure(Context context) {
         super(context);
     }
     //Generelle Initializierung eines objektes in die Aktivity

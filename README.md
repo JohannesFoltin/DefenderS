@@ -5,6 +5,7 @@ TODO
 * bullets
 * bosse
 * Spawn Geschwindigkeit
+* High Score
 Bugs
 *
 *
