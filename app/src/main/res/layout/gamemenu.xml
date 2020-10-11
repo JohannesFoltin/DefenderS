@@ -33,7 +33,7 @@
             android:text="START" />
 
         <Button
-            android:id="@+id/einstellungenbutton"
+            android:id="@+id/settingsbutton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="EINSTELLUNGEN" />

@@ -14,28 +14,35 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+
+
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = MainActivity.class.getSimpleName();
+
+
     // Liste für alle Gegner
     public List<SelfThinkingFigure> selfThinkingFiguresList = new ArrayList<>();
-    private float xZiel,yZiel;
+
+
     public int displaywidht;
     public int displayheight;
     private int score = 0;
+
     private Player player;
     private TextView scoreView;
+
     private Handler handler = new Handler();
     private Runnable r = new Runnable() {
         public void run() {
-            setEnemy(Constants.enemyDuration);
-            handler.postDelayed(r,new Random().nextInt(Constants.spwanIntervallGeschwindigkeit-100)+100 );
+            setEnemy(ChangableMembers.getEnemyDuration());
+            handler.postDelayed(r,new Random().nextInt(ChangableMembers.getEnemyIntervallGeschwindigkeit()-50)+50 );
         }
     };
     private Handler handler2 = new Handler();
     private Runnable r2 = new Runnable() {
         public void run() {
-            spwanGunShot(300);
-            handler2.postDelayed(r2,250 );
+            spwanGunShot(ChangableMembers.getMissleSpeed());
+            handler2.postDelayed(r2,ChangableMembers.getMissleIntervallGeschwindigkeit());
         }
     };
 
@@ -87,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
         gunShot.setBackgroundResource(R.mipmap.gunshot);
         selfThinkingFiguresList.add(gunShot);
     }
-    // bei collision mit etwas alle Meteoriden stoppen und Player unmovable machen
+    // bei collision mit etwas, alle Meteoriden stoppen und Player unmovable machen
     public void collison(Enemy enemy){
         ImageView gameOver = findViewById(R.id.gameover);
         player.stopPlayer();
@@ -98,6 +105,7 @@ public class MainActivity extends AppCompatActivity {
         handler.removeCallbacksAndMessages(null);
         handler2.removeCallbacksAndMessages(null);
     }
+    //Ein Highscore wird hochgezählt
     public void setScore(){
     score++;
     scoreView.setText(""+score);

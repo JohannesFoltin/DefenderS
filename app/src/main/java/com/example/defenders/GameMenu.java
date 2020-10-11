@@ -13,18 +13,26 @@ public class GameMenu extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.gamemenu);
-        Button button = (Button) findViewById(R.id.startbutton);
+        Button startButton = (Button) findViewById(R.id.startbutton);
         TextView ausgabe = findViewById(R.id.Ausgabe);
         ausgabe.setText("Höhe: "+ getResources().getDisplayMetrics().heightPixels + "breite: "+ getResources().getDisplayMetrics().widthPixels);
-        button.setOnClickListener(new View.OnClickListener() {
+        startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-             openNewActivity();
+             openNewActivity(MainActivity.class);
             }
         });
+        Button settingsButton = (Button) findViewById(R.id.settingsbutton);
+        settingsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openNewActivity(Settings.class);
+            }
+        });
+
     }
-    public void openNewActivity(){
-        Intent intent = new Intent(this, MainActivity.class);
+    public void openNewActivity(Class klasse){
+        Intent intent = new Intent(this, klasse);
         startActivity(intent);
     }
 }
