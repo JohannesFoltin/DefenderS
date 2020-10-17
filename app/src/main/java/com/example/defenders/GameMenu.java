@@ -9,10 +9,14 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class GameMenu extends AppCompatActivity {
+    private TextView highScore;
+    private TextView lastScore;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.gamemenu);
+        Score.load(this);
+        ChangableMembers.load(this);
         Button startButton = (Button) findViewById(R.id.startbutton);
         TextView ausgabe = findViewById(R.id.Ausgabe);
         ausgabe.setText("Höhe: "+ getResources().getDisplayMetrics().heightPixels + "breite: "+ getResources().getDisplayMetrics().widthPixels);
@@ -29,10 +33,25 @@ public class GameMenu extends AppCompatActivity {
                 openNewActivity(Settings.class);
             }
         });
+        highScore  = findViewById(R.id.highScore);
+        lastScore = findViewById(R.id.lastScore);
+        highScore.setText("HIGH SCORE: "+ Score.getHighScore());
+        lastScore.setText("Last Score: "+Score.getLastScore());
+
 
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Score.load(this);
+        highScore.setText("HIGH SCORE: "+ Score.getHighScore());
+        lastScore.setText("Last Score: "+Score.getLastScore());
+    }
+
     public void openNewActivity(Class klasse){
         Intent intent = new Intent(this, klasse);
         startActivity(intent);
     }
+
 }

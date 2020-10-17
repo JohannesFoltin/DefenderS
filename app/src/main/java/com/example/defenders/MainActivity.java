@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
         player.setCoordssystem(hgrund);
         handler2.postDelayed(r2,100);
         scoreView = findViewById(R.id.score);
-        scoreView.setText("" + score);
+        scoreView.setText("Score: " + score);
 
     }
     // Erstellung eines Gegners mit der Initialize methode aus Enemy.
@@ -104,10 +104,12 @@ public class MainActivity extends AppCompatActivity {
         }
         handler.removeCallbacksAndMessages(null);
         handler2.removeCallbacksAndMessages(null);
+        Score.scoreUeberpruefung(score);
+        Score.save(this);
     }
     //Ein Highscore wird hochgezählt
     public void setScore(){
     score++;
-    scoreView.setText(""+score);
+    scoreView.setText("Score: "+ score);
     }
 }
