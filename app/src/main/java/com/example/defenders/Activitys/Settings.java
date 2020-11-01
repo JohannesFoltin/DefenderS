@@ -1,4 +1,4 @@
-package com.example.defenders;
+package com.example.defenders.Activitys;
 import androidx.appcompat.app.AppCompatActivity;
 
 
@@ -10,6 +10,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.example.defenders.ChangableMembers;
+import com.example.defenders.R;
 
 public class Settings extends AppCompatActivity{
     private static final String TAG = Settings.class.getSimpleName();

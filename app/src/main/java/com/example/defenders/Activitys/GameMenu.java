@@ -1,4 +1,4 @@
-package com.example.defenders;
+package com.example.defenders.Activitys;
 import androidx.appcompat.app.AppCompatActivity;
 
 
@@ -7,6 +7,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.example.defenders.Activitys.MainActivity;
+import com.example.defenders.Activitys.Settings;
+import com.example.defenders.ChangableMembers;
+import com.example.defenders.R;
+import com.example.defenders.Score;
 
 public class GameMenu extends AppCompatActivity {
     private TextView highScore;

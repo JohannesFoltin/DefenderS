@@ -1,4 +1,4 @@
-package com.example.defenders;
+package com.example.defenders.Activitys;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,11 +9,18 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.example.defenders.ChangableMembers;
+import com.example.defenders.Constants;
+import com.example.defenders.Enemy;
+import com.example.defenders.GunShot;
+import com.example.defenders.Player;
+import com.example.defenders.R;
+import com.example.defenders.Score;
+import com.example.defenders.SelfThinkingFigure;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-
 
 
 public class MainActivity extends AppCompatActivity {
@@ -35,14 +42,14 @@ public class MainActivity extends AppCompatActivity {
     private Runnable r = new Runnable() {
         public void run() {
             setEnemy(ChangableMembers.getEnemyDuration());
-            handler.postDelayed(r,new Random().nextInt(ChangableMembers.getEnemyIntervallGeschwindigkeit()-50)+50 );
+            handler.postDelayed(r, new Random().nextInt(ChangableMembers.getEnemyIntervallGeschwindigkeit() - 50) + 50);
         }
     };
     private Handler handler2 = new Handler();
     private Runnable r2 = new Runnable() {
         public void run() {
             spwanGunShot(ChangableMembers.getMissleSpeed());
-            handler2.postDelayed(r2,ChangableMembers.getMissleIntervallGeschwindigkeit());
+            handler2.postDelayed(r2, ChangableMembers.getMissleIntervallGeschwindigkeit());
         }
     };
 
@@ -55,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
         displaywidht = getResources().getDisplayMetrics().widthPixels;
         displayheight = getResources().getDisplayMetrics().heightPixels;
         //Player wird erstellt
-        player = new Player(this,MainActivity.this);
+        player = new Player(this, MainActivity.this);
         //Player wird zum Contentview hinzugefügt (ins Leben gerufen!)
         addContentView(player, player.initialize());
         player.setBackgroundResource(R.mipmap.startrocketl);
@@ -69,37 +76,39 @@ public class MainActivity extends AppCompatActivity {
         handler.postDelayed(r, Constants.startSpwanDelay);
         //PLayer movement wird aktiviert
         player.setCoordssystem(hgrund);
-        handler2.postDelayed(r2,100);
+        handler2.postDelayed(r2, 100);
         scoreView = findViewById(R.id.score);
         scoreView.setText("Score: " + score);
 
     }
+
     // Erstellung eines Gegners mit der Initialize methode aus Enemy.
     //startX aufgerufen. Zufällige X Koordinate!
     // Gegner mit move von Oben nach unten gleiten lassen
     //Hintergrund gesetzt
     // Gegner zur gegnerListe hinzugefügt.
-    public void setEnemy(int geschwindigkeit){
-            final Enemy enemy = new Enemy(this, player, MainActivity.this,8);
-            addContentView(enemy, enemy.initialize());
-            enemy.startX();
-            enemy.move(displayheight, geschwindigkeit);
-            enemy.setBackgroundResource(R.mipmap.meteorid);
-            selfThinkingFiguresList.add(enemy);
+    public void setEnemy(int geschwindigkeit) {
+        final Enemy enemy = new Enemy(this, player, MainActivity.this, 8);
+        addContentView(enemy, enemy.initialize());
+        enemy.startX();
+        enemy.move(displayheight, geschwindigkeit);
+        enemy.setBackgroundResource(R.mipmap.meteorid);
+        selfThinkingFiguresList.add(enemy);
     }
-    public void spwanGunShot(int speed){
-        final GunShot gunShot = new GunShot(this,player,MainActivity.this);
+
+    public void spwanGunShot(int speed) {
+        final GunShot gunShot = new GunShot(this, player, MainActivity.this);
         addContentView(gunShot, gunShot.initialize());
         gunShot.startGunShot(speed);
         gunShot.setBackgroundResource(R.mipmap.gunshot);
-        selfThinkingFiguresList.add(gunShot);
     }
+
     // bei collision mit etwas, alle Meteoriden stoppen und Player unmovable machen
-    public void collison(Enemy enemy){
+    public void collison() {
         ImageView gameOver = findViewById(R.id.gameover);
         player.stopPlayer();
         gameOver.setVisibility(View.VISIBLE);
-        for (int i = 0; i< selfThinkingFiguresList.size(); i++){
+        for (int i = 0; i < selfThinkingFiguresList.size(); i++) {
             selfThinkingFiguresList.get(i).freeze();
         }
         handler.removeCallbacksAndMessages(null);
@@ -107,9 +116,10 @@ public class MainActivity extends AppCompatActivity {
         Score.scoreUeberpruefung(score);
         Score.save(this);
     }
+
     //Ein Highscore wird hochgezählt
-    public void setScore(){
-    score++;
-    scoreView.setText("Score: "+ score);
+    public void setScore() {
+        score++;
+        scoreView.setText("Score: " + score);
     }
 }

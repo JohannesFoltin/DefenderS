@@ -2,9 +2,10 @@ package com.example.defenders;
 
 import android.animation.ValueAnimator;
 import android.content.Context;
-import android.view.ViewPropertyAnimator;
 import android.view.animation.LinearInterpolator;
 
+import com.example.defenders.Activitys.MainActivity;
+//Ein selbstständiger Gunshot
 public class GunShot extends SelfThinkingFigure implements ValueAnimator.AnimatorUpdateListener {
       private Player player;
 
@@ -12,6 +13,8 @@ public class GunShot extends SelfThinkingFigure implements ValueAnimator.Animato
         super(context,mainActivity);
         this.player = player;
     }
+    //Playerpostion wird ermittelt.
+    //Animation wird gestartet
     public void startGunShot(int speed){
         setX(player.getX()-(getWidth()/2));
         setY(player.getY()-(getHeight()/2));
@@ -29,14 +32,16 @@ public class GunShot extends SelfThinkingFigure implements ValueAnimator.Animato
         }).y(-1000).setInterpolator(new LinearInterpolator()).setDuration(speed);
 
     }
-
+    //Kollision mit einem Enemy wird überprüft.
+    //Wenn Enemy getroffen, Highscore +1 und Enemy und Gunshot "Sterben"
     @Override
     public void onAnimationUpdate(ValueAnimator animation) {
-
-
+        for (int i = 0; i<mainActivity.selfThinkingFiguresList.size();i++){
+            if (kollisionDectionLvl1(mainActivity.selfThinkingFiguresList.get(i)) && kollisionDectionLvl2(mainActivity.selfThinkingFiguresList.get(i))){
+                mainActivity.setScore();
+                mainActivity.selfThinkingFiguresList.get(i).derFreiTot();
+                derFreiTot();
+            }
+        }
     }
-    private float pythagoras(float kathte1x, float kathte2y){
-        return (float) Math.sqrt((double)(((getX()-kathte1x)*(getX()-kathte1x))+((getY()-kathte2y)*(getY()-kathte2y))));
-    }
-
 }
