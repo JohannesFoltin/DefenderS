@@ -70,8 +70,6 @@ public class MainActivity extends AppCompatActivity {
         player.startSequenz();
         //Hintergrund wird gesetzt
         ImageView hgrund = findViewById(R.id.hgrund);
-        //Hgrund wird mit eienem Gif versehen
-        Glide.with(this).load(R.drawable.test).into(hgrund);
         //Gegner Regen wird gestartet. r dabei Runnable.
         handler.postDelayed(r, Constants.startSpwanDelay);
         //PLayer movement wird aktiviert

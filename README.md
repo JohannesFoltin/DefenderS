@@ -1,14 +1,11 @@
 TODO
 * Mehr Enemys über Zeit
-* Hitbox!
 * Hintergrund
-* bullets
 * bosse
-* Spawn Geschwindigkeit
 * Pause
-Bugs
-*
-*
+* Online Highscore
+* Layout Überarbeitung
+
 Anmerkungen:
 * Man startet immer von Welle 1!
 * Wellen

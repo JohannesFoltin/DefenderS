@@ -11,7 +11,7 @@
         android:id="@+id/hgrund"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#00FFFFFF"
+        android:background="@drawable/background"
         android:visibility="visible"
         android:tileMode="repeat"/>
 
@@ -27,6 +27,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
+        android:textColor="@color/white"
         tools:layout_editor_absoluteX="176dp"
         tools:layout_editor_absoluteY="153dp" />
 

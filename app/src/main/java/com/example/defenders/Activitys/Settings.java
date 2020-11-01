@@ -95,7 +95,7 @@ public class Settings extends AppCompatActivity{
 
         final EditText editMissleIntervallGeschwindigkeit = findViewById(R.id.editMissleIntervallGeschwindigkeit);
         final TextView textMissleIntervallGeschwindigkeit = findViewById(R.id.textViewMissleIntervallGeschwindigkeit);
-        textMissleIntervallGeschwindigkeit.setText("MissleIntervallGeschwindigkeit: "+ ChangableMembers.getEnemyIntervallGeschwindigkeit());
+        textMissleIntervallGeschwindigkeit.setText("MissleIntervallGeschwindigkeit: "+ ChangableMembers.getMissleIntervallGeschwindigkeit());
         editMissleIntervallGeschwindigkeit.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -109,7 +109,7 @@ public class Settings extends AppCompatActivity{
 
             @Override
             public void afterTextChanged(Editable s) {
-                ChangableMembers.setEnemyIntervallGeschwindigkeit(Integer.parseInt(editMissleIntervallGeschwindigkeit.getText().toString()));
+                ChangableMembers.setMissleIntervallGeschwindigkeit(Integer.parseInt(editMissleIntervallGeschwindigkeit.getText().toString()));
             }
         });
     }
