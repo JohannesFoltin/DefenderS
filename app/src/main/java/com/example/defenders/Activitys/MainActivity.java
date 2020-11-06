@@ -19,6 +19,7 @@ import com.example.defenders.Score;
 import com.example.defenders.SelfThinkingFigure;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -29,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
     // Liste für alle Gegner
     public List<SelfThinkingFigure> selfThinkingFiguresList = new ArrayList<>();
-
+    private int[] meteoridenBilderListe = new int[]{R.mipmap.smallmeteorid,R.mipmap.meteorid,R.mipmap.bigmeteorid};
 
     public int displaywidht;
     public int displayheight;
@@ -90,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
         addContentView(enemy, enemy.initialize());
         enemy.startX();
         enemy.move(displayheight, geschwindigkeit);
-        enemy.setBackgroundResource(R.mipmap.meteorid);
+        enemy.setBackgroundResource(meteoridenBilderListe[(int)(Math.random()*3f)]);
         selfThinkingFiguresList.add(enemy);
     }
 
