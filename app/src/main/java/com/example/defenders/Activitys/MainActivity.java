@@ -2,6 +2,7 @@ package com.example.defenders.Activitys;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.media.Image;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -75,7 +76,9 @@ public class MainActivity extends AppCompatActivity {
         handler.postDelayed(r, Constants.startSpwanDelay);
         //PLayer movement wird aktiviert
         player.setCoordssystem(hgrund);
+        //Schüsse werden gestartet
         handler2.postDelayed(r2, 100);
+        //Score wird gefunden. Es wird keine Postioin gesetzt da er automatisch auf 0 0 geht.
         scoreView = findViewById(R.id.score);
         scoreView.setText("Score: " + score);
 
@@ -115,7 +118,6 @@ public class MainActivity extends AppCompatActivity {
         Score.scoreUeberpruefung(score);
         Score.save(this);
     }
-
     //Ein Highscore wird hochgezählt
     public void setScore() {
         score++;

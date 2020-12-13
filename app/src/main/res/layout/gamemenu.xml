@@ -6,6 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".Activitys.MainActivity">
 
+    <VideoView
+        android:id="@+id/videoView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:ignore="MissingConstraints" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -14,29 +20,26 @@
 
         <TextView
             android:id="@+id/textView"
+            android:textColor="@color/white"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="DefenderS" />
+            android:text="DefenderS"
+            android:gravity="center"
+            android:textSize="40dp"/>
 
         <TextView
             android:id="@+id/highScore"
+            android:textColor="@color/white"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="High Score: " />
 
         <TextView
             android:id="@+id/lastScore"
+            android:textColor="@color/white"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Last Score: " />
-
-        <TextView
-            android:id="@+id/Ausgabe"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="TextView"
-            tools:layout_editor_absoluteX="86dp"
-            tools:layout_editor_absoluteY="6dp" />
 
         <Button
             android:id="@+id/startbutton"
@@ -61,5 +64,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Spiel Beenden" />
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

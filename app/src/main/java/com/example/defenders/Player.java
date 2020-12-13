@@ -45,7 +45,6 @@ public class Player extends Figure {
     public void stopPlayer() {
         background.setOnTouchListener(null);
     }
-
     //Player wird ins Bild geschoben
     //Er wird erst jetzt visible gesetzt wegen den enemys
     public void startSequenz() {
