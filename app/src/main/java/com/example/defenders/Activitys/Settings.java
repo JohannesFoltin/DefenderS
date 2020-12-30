@@ -112,6 +112,25 @@ public class Settings extends AppCompatActivity{
                 ChangableMembers.setMissleIntervallGeschwindigkeit(Integer.parseInt(editMissleIntervallGeschwindigkeit.getText().toString()));
             }
         });
+        final EditText playerNameSetter = findViewById(R.id.nameSetter);
+        final TextView playerNameGetter = findViewById(R.id.textName);
+        playerNameGetter.setText("Deine Name lautet derzeit: " + ChangableMembers.getPlayerName());
+        playerNameSetter.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                ChangableMembers.setPlayerName(String.valueOf(playerNameSetter.getText()));
+            }
+        });
     }
     public void openNewActivity(Class klasse){
         Intent intent = new Intent(this, klasse);

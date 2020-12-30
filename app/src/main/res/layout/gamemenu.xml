@@ -41,6 +41,13 @@
             android:layout_height="wrap_content"
             android:text="Last Score: " />
 
+        <TextView
+            android:id="@+id/displayName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textColor="@color/white"/>
+
         <Button
             android:id="@+id/startbutton"
             android:layout_width="match_parent"
@@ -58,6 +65,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Upgrades" />
+
+        <Button
+            android:id="@+id/scorelist"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Globale Bestenliste" />
 
         <Button
                 android:id="@+id/spielbeenden"

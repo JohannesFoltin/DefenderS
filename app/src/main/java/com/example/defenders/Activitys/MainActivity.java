@@ -2,13 +2,21 @@ package com.example.defenders.Activitys;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
 import com.example.defenders.ChangableMembers;
 import com.example.defenders.Constants;
@@ -21,7 +29,9 @@ import com.example.defenders.SelfThinkingFigure;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 
@@ -117,10 +127,53 @@ public class MainActivity extends AppCompatActivity {
         handler2.removeCallbacksAndMessages(null);
         Score.scoreUeberpruefung(score);
         Score.save(this);
+        Button returnButton = findViewById(R.id.returnbutton);
+        returnButton.setVisibility(View.VISIBLE);
+        returnButton.setText("Save&Return");
+        returnButton.setX(displaywidht/2);
+        returnButton.setY(displayheight/2);
+        returnButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                scoreSenden(Score.getLastScore(),ChangableMembers.getPlayerName());
+                openNewActivity(GameMenu.class);
+            }
+        });
     }
     //Ein Highscore wird hochgezählt
     public void setScore() {
         score++;
         scoreView.setText("Score: " + score);
+    }
+
+    public void scoreSenden(final int score, final String name){
+        RequestQueue MyRequestQueue = Volley.newRequestQueue(this);
+        String url = "http://docfoltin.de:8899/store"; // <----enter your post url here
+        StringRequest MyStringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                //This code is executed if the server responds, whether or not the response contains data.
+                //The String 'response' contains the server's response.
+            }
+        }, new Response.ErrorListener() { //Create an error listener to handle errors appropriately.
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                //This code is executed if there is an error.
+                error.printStackTrace();
+            }
+        })
+        {
+            protected Map<String, String> getParams() {
+                HashMap<String, String> hashMap = new HashMap<>();
+                hashMap.put("player",name);
+                hashMap.put("score","" + score);
+                return hashMap;
+            }
+        };
+        MyRequestQueue.add(MyStringRequest);
+    }
+    public void openNewActivity(Class klasse){
+        Intent intent = new Intent(this, klasse);
+        startActivity(intent);
     }
 }

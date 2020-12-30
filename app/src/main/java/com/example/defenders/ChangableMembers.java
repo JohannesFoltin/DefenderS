@@ -8,10 +8,19 @@ public class ChangableMembers {
     public static final String MISSLE_SPEED = "missleSpeed";
     public static final String ENEMY_INTERVALL_GESCHWINDIGKEIT = "enemyIntervallGeschwindigkeit";
     public static final String ENEMY_DURATION = "enemyDuration";
-    private static int enemyIntervallGeschwindigkeit = 250;
+    private static int enemyIntervallGeschwindigkeit = 500;
     private static int enemyDuration = 2500;
-    private static int missleSpeed = 300;
-    private static int missleIntervallGeschwindigkeit = 300;
+    private static int missleSpeed = 1000;
+    private static int missleIntervallGeschwindigkeit = 100;
+    private static String playerName;
+
+    public static String getPlayerName() {
+        return playerName;
+    }
+
+    public static void setPlayerName(String playerName) {
+        ChangableMembers.playerName = playerName;
+    }
 
 
     public static int getEnemyDuration() {
@@ -53,14 +62,15 @@ public class ChangableMembers {
         editor.putInt(MISSLE_SPEED,missleSpeed);
         editor.putInt(ENEMY_INTERVALL_GESCHWINDIGKEIT,enemyIntervallGeschwindigkeit);
         editor.putInt(ENEMY_DURATION,enemyDuration);
+        editor.putString("Player_Name",playerName);
         editor.commit();
     }
     public static void load(Context context){
         SharedPreferences preferences = context.getSharedPreferences("application_data", Context.MODE_PRIVATE);
-        missleSpeed = preferences.getInt(MISSLE_SPEED, 300);
-        missleIntervallGeschwindigkeit = preferences.getInt(MISSLE_INTERVALL_GESCHWINDIGKEIT,300);
-        enemyIntervallGeschwindigkeit = preferences.getInt(ENEMY_INTERVALL_GESCHWINDIGKEIT,250);
+        missleSpeed = preferences.getInt(MISSLE_SPEED, 1000);
+        missleIntervallGeschwindigkeit = preferences.getInt(MISSLE_INTERVALL_GESCHWINDIGKEIT,100);
+        enemyIntervallGeschwindigkeit = preferences.getInt(ENEMY_INTERVALL_GESCHWINDIGKEIT,500);
         enemyDuration = preferences.getInt(ENEMY_DURATION,2500);
-
+        playerName = preferences.getString("Player_Name","Not defined yet!");
     }
 }
