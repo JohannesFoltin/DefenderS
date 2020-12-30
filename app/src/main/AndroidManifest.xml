@@ -12,19 +12,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:usesCleartextTraffic="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".Activitys.MainActivity">
+        android:theme="@style/AppTheme"
+        >
+        //Bei jeder neuen Activity "android:screenOrientation="portrait" " einfügen! Dies lockt den Screen auf den Portrait Modus (Vertical)!
+        <activity android:name=".Activitys.MainActivity"
+            android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".Activitys.Settings">
+        <activity android:name=".Activitys.Settings"
+            android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".Activitys.GameMenu">
+        <activity android:name=".Activitys.GameMenu"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activitys.Scorelist">
+        <activity android:name=".Activitys.Scorelist"
+            android:screenOrientation="portrait">
         </activity>
         
     </application>

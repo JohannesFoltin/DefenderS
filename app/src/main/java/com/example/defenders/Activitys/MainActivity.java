@@ -3,7 +3,6 @@ package com.example.defenders.Activitys;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -17,7 +16,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.bumptech.glide.Glide;
 import com.example.defenders.ChangableMembers;
 import com.example.defenders.Constants;
 import com.example.defenders.Enemy;
@@ -27,8 +25,9 @@ import com.example.defenders.R;
 import com.example.defenders.Score;
 import com.example.defenders.SelfThinkingFigure;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -122,16 +121,14 @@ public class MainActivity extends AppCompatActivity {
         gameOver.setVisibility(View.VISIBLE);
         for (int i = 0; i < selfThinkingFiguresList.size(); i++) {
             selfThinkingFiguresList.get(i).freeze();
+            selfThinkingFiguresList.get(i).setVisibility(View.INVISIBLE);
         }
         handler.removeCallbacksAndMessages(null);
         handler2.removeCallbacksAndMessages(null);
         Score.scoreUeberpruefung(score);
         Score.save(this);
-        Button returnButton = findViewById(R.id.returnbutton);
+        Button returnButton = findViewById(R.id.returnbuttonwithSave);
         returnButton.setVisibility(View.VISIBLE);
-        returnButton.setText("Save&Return");
-        returnButton.setX(displaywidht/2);
-        returnButton.setY(displayheight/2);
         returnButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -139,6 +136,20 @@ public class MainActivity extends AppCompatActivity {
                 openNewActivity(GameMenu.class);
             }
         });
+        Button returnButtonwithoutSave = findViewById(R.id.returnwithoutSave);
+        returnButtonwithoutSave.setVisibility(View.VISIBLE);
+        returnButtonwithoutSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openNewActivity(GameMenu.class);
+            }
+        });
+        TextView scoreAfterFinishing = findViewById(R.id.scoreAfterFinishing);
+        scoreAfterFinishing.setText("Dein erreichter Score lautet: " + score);
+        scoreAfterFinishing.setVisibility(View.VISIBLE);
+        TextView onlineName  = findViewById(R.id.playerNameTextView);
+        onlineName.setText("Dein derzeitiger Name lautet: " + ChangableMembers.getPlayerName());
+        onlineName.setVisibility(View.VISIBLE);
     }
     //Ein Highscore wird hochgezählt
     public void setScore() {

@@ -51,31 +51,47 @@
         <Button
             android:id="@+id/startbutton"
             android:layout_width="match_parent"
+            android:background="@drawable/my_button_bg"
+            android:textColor="@color/white"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:text="START" />
 
         <Button
             android:id="@+id/settingsbutton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/my_button_bg"
+            android:textColor="@color/white"
+            android:layout_marginTop="10dp"
             android:text="EINSTELLUNGEN" />
 
         <Button
             android:id="@+id/verbesserungen"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/my_button_bg"
+            android:textColor="@color/white"
+            android:layout_marginTop="10dp"
             android:text="Upgrades" />
 
         <Button
             android:id="@+id/scorelist"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/my_button_bg"
+            android:textColor="@color/white"
+            android:layout_marginTop="10dp"
+
             android:text="Globale Bestenliste" />
 
         <Button
                 android:id="@+id/spielbeenden"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+            android:background="@drawable/my_button_bg"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/white"
                 android:text="Spiel Beenden" />
 
     </LinearLayout>

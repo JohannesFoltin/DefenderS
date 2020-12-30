@@ -30,12 +30,42 @@
         android:textColor="@color/white"
         tools:ignore="MissingConstraints" />
 
-    <Button
-        android:id="@+id/returnbutton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button"
-        android:visibility="invisible"
-        tools:ignore="MissingConstraints" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
+        <TextView
+            android:id="@+id/scoreAfterFinishing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textColor="@color/white"
+            tools:ignore="MissingConstraints"
+            android:visibility="invisible"/>
+        <TextView
+            android:id="@+id/playerNameTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textColor="@color/white"
+            tools:ignore="MissingConstraints"
+            android:visibility="invisible"/>
+        <Button
+            android:id="@+id/returnwithoutSave"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Return without Save online"
+            android:visibility="invisible"
+            tools:ignore="MissingConstraints" />
+
+        <Button
+            android:id="@+id/returnbuttonwithSave"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Return with Save the Score Online"
+            android:visibility="invisible"
+            tools:ignore="MissingConstraints" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
