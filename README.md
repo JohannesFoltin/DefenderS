@@ -1,6 +1,5 @@
 TODO
 * bosse
-* Layout Überarbeitung
 * Geld Money Monteten Zaster Kohle 
 * Sounds!
 * Uebergaenge zwischen den Activitys

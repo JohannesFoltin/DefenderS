@@ -20,6 +20,7 @@ import com.example.defenders.ChangableMembers;
 import com.example.defenders.Constants;
 import com.example.defenders.Enemy;
 import com.example.defenders.GunShot;
+import com.example.defenders.Level;
 import com.example.defenders.Player;
 import com.example.defenders.R;
 import com.example.defenders.Score;
@@ -52,7 +53,12 @@ public class MainActivity extends AppCompatActivity {
     private Handler handler = new Handler();
     private Runnable r = new Runnable() {
         public void run() {
-            setEnemy(ChangableMembers.getEnemyDuration());
+            if(!lvl.hasEnemies()){
+                lvlIndex++;
+                lvl = new Level(lvlIndex);
+                lvlDisplay.setText("Level: " +lvlIndex);
+            }
+            setEnemy(lvl.getEnemyduration());
             handler.postDelayed(r, new Random().nextInt(ChangableMembers.getEnemyIntervallGeschwindigkeit() - 50) + 50);
         }
     };
@@ -63,6 +69,9 @@ public class MainActivity extends AppCompatActivity {
             handler2.postDelayed(r2, ChangableMembers.getMissleIntervallGeschwindigkeit());
         }
     };
+    private int lvlIndex = 1;
+    private Level lvl;
+    private TextView lvlDisplay;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,9 +99,12 @@ public class MainActivity extends AppCompatActivity {
         //Score wird gefunden. Es wird keine Postioin gesetzt da er automatisch auf 0 0 geht.
         scoreView = findViewById(R.id.score);
         scoreView.setText("Score: " + score);
+        lvl = new Level(lvlIndex);
+        lvlDisplay = findViewById(R.id.lvlDisplay);
+        lvlDisplay.setY(50);
+        lvlDisplay.setText("Level: " +lvlIndex);
 
     }
-
     // Erstellung eines Gegners mit der Initialize methode aus Enemy.
     //startX aufgerufen. Zufällige X Koordinate!
     // Gegner mit move von Oben nach unten gleiten lassen

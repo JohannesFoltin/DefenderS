@@ -22,6 +22,7 @@ public class Settings extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.settings);
+        overridePendingTransition(R.anim.push_right_in,R.anim.push_right_out);
 
         Button fertigButton = findViewById(R.id.buttonFertig);
         fertigButton.setOnClickListener(new View.OnClickListener() {

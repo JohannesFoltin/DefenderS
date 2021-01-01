@@ -29,6 +29,7 @@ public class Scorelist extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.scorelist);
+        overridePendingTransition(R.anim.push_right_in,R.anim.push_right_out);
         final Gson gson = new Gson();
         RequestQueue queue = Volley.newRequestQueue(this);
         String url ="http://docfoltin.de:8899/scores";

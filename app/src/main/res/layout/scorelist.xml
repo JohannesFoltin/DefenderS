@@ -7,7 +7,13 @@
     android:layout_height="match_parent"
    >
 
-
+    <ImageView
+        android:id="@+id/hgrundScoreList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/background"
+        android:visibility="visible"
+        android:tileMode="repeat"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -19,6 +25,7 @@
             android:id="@+id/errorTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="@color/white"
             android:text="TextView"
             android:visibility="invisible" />
 
@@ -26,65 +33,77 @@
             android:id="@+id/place1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="@color/white"
             android:text="Cant find Data!"
              />
 
         <TextView
             android:id="@+id/place2"
             android:layout_width="match_parent"
+            android:textColor="@color/white"
             android:layout_height="wrap_content"
             android:text="Cant find Data!" />
 
         <TextView
             android:id="@+id/place3"
             android:layout_width="match_parent"
+            android:textColor="@color/white"
             android:layout_height="wrap_content"
             android:text="Cant find Data!" />
 
         <TextView
             android:id="@+id/place4"
             android:layout_width="match_parent"
+            android:textColor="@color/white"
             android:layout_height="wrap_content"
             android:text="Cant find Data!" />
 
         <TextView
             android:id="@+id/place5"
+            android:textColor="@color/white"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Cant find Data!" />
 
         <TextView
             android:id="@+id/place6"
+            android:textColor="@color/white"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Cant find Data!" />
 
         <TextView
             android:id="@+id/place7"
+            android:textColor="@color/white"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Cant find Data!" />
 
         <TextView
             android:id="@+id/place8"
+            android:textColor="@color/white"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Cant find Data!" />
 
         <TextView
             android:id="@+id/place9"
+            android:textColor="@color/white"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Cant find Data!" />
 
         <TextView
             android:id="@+id/place10"
+            android:textColor="@color/white"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Cant find Data!" />
 
         <Button
             android:id="@+id/returnToMenuButton"
+            android:background="@drawable/my_button_bg"
+            android:textColor="@color/white"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Exit"

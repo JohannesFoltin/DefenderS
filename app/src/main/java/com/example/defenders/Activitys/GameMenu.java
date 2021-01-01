@@ -37,8 +37,10 @@ public class GameMenu extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.gamemenu);
+        overridePendingTransition(R.anim.push_right_in,R.anim.push_right_out);
         Score.load(this);
         ChangableMembers.load(this);
+        final MediaPlayer mp = MediaPlayer.create(this,R.raw.menusound);
         VideoView vv = findViewById(R.id.videoView);
         vv.setVideoPath("android.resource://" + getPackageName() + "/" + R.raw.backvidbearbeitet);
         vv.requestFocus();
@@ -53,6 +55,7 @@ public class GameMenu extends AppCompatActivity {
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mp.start();
              openNewActivity(MainActivity.class);
             }
         });
@@ -60,6 +63,7 @@ public class GameMenu extends AppCompatActivity {
         settingsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mp.start();
                 openNewActivity(Settings.class);
             }
         });
@@ -79,6 +83,7 @@ public class GameMenu extends AppCompatActivity {
         scoreList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mp.start();
                 openNewActivity(Scorelist.class);
             }
         });
